@@ -9,7 +9,7 @@ Este projeto é um sistema de cartões de perguntas e respostas, onde o usuário
 - `Adicionar nova carta`: O site possui um formulário curto e intuitivo para adicionar uma carta.
 - `Sorteio de carta`: Quando o usuário estiver pronto para iniciar os estudos por meio do flash card, basta clicar em sortear e aparecerá a primeira carta.
 <h2>EN-US</h2>
-this project is a system of question and answer cards, where the user writes and draws a card randomly with a question and answer previously written by the user.
+This project is a system of question and answer cards, where the user writes and draws a card randomly with a question and answer previously written by the user.
 
 <h3>:construction: Project under construction :construction:</h3>
 
