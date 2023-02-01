@@ -1,4 +1,4 @@
-<h1 align="center">Flash Cards</h1>
+<h1 align="center">:spades::diamonds::hearts::clubs:Flash Cards:spades::diamonds::hearts::clubs:</h1>
 <h2>PT-BR</h2>
 Este projeto é um sistema de cartões de perguntas e respostas, onde o usuário escreve e sorteia um cartão aleatoriamente com uma pergunta e resposta escrita pelo usuario anteriormente
 
