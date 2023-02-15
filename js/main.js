@@ -1,8 +1,14 @@
 const form = document.querySelector('form');
 const list = document.querySelector('div.cards-container');
-const cards = [];
+const cards = JSON.parse(localStorage.getItem('cards')) || [];
 const btnSort = document.querySelector('.btn-sort');
+const modalExit = document.querySelector('.btn-exit');
+const modal = document.querySelector('.modal-container');
+const responseCard = document.querySelector('.text-response');
+const questionCard = document.querySelector('.text-question');
 
+//Criando Carta
+//Create Card
 form.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -14,63 +20,52 @@ form.addEventListener('submit', (event) => {
         "response": response.value
     };
     
-    card.id = cards[cards.length - 1] ? (cards[cards.length - 1] + 1) : 0;
-
+    let index = cards.length;
+    if(cards.length == 0){
+        card.id = 0
+    } else{
+        card.id = index;
+    }
     cards.push(card);
 
-    saveCard();
+    localStorage.setItem("cards", JSON.stringify(cards));
     alert('Card salvo com sucesso.');
 
     question.value = '';
     response.value = '';
 });
 
-function saveCard() {
-    localStorage.setItem('cards', JSON.stringify(cards))
-}
-
+//Criando evento de sorteio
+//Create sort event
+let verify = 0;
 btnSort.addEventListener('click', () => {
-    
-    
+    const id = sortID();
+    const exist = cards.findIndex(element => element.id === id);
+    const card = cards[id];
+    if(exist && verify !== id){
+        createCard(card);
+        modal.classList.remove('disable');
+        verify = id;
+    }else{
+        id = sortID();
+    }    
 });
 
+//Disabilitando o modal
+//Disable modal window
+modalExit.addEventListener('click', () => {
+    modal.classList.add('disable');
+});
+
+//Função auxiliar de sorteio de id
+//Auxiliary function for sort id
 function sortID(){
     return Math.floor(Math.random() * cards.length);
 }
 
-// function createCard(question, response){
-//     const newItem = document.createElement('div');
-//     newItem.classList.add('card');
-
-//     const newQuestion = document.createElement('p');
-//     newQuestion.classList.add('card-pergunta');
-//     newQuestion.classList.add('disable');
-//     newQuestion.innerHTML = question;
-
-//     const btnVer = document.createElement('button');
-//     btnVer.innerHTML = 'Ver Resposta';
-//     btnVer.classList.add('btn-ver')
-//     btnVer.classList.add('disable');
-//     btnVer.addEventListener('click', () => {
-//         newResponse.classList.remove('disable');
-
-//         newQuestion.classList.add('disable');
-//         btnVer.classList.add('disable');
-//     });
-
-//     const newResponse = document.createElement('p');
-//     newResponse.classList.add('card-resposta');
-//     newResponse.classList.add('disable');
-//     newResponse.innerHTML = response;
-
-//     newItem.addEventListener('click', (event) => {
-//         newQuestion.classList.remove('disable');
-//         btnVer.classList.remove('disable');
-//     });
-
-//     newItem.appendChild(newQuestion);
-//     newItem.appendChild(btnVer);
-//     newItem.appendChild(newResponse);
-//     list.appendChild(newItem);
-
-// }
+//Criando card com a resposta e a pergunta
+//Create card with question and response
+function createCard(card){
+    questionCard.innerText = card.question;
+    responseCard.innerText = card.response;
+}

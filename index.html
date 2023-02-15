@@ -9,7 +9,20 @@
 </head>
 <body>
     <main>
-       <div class="form-container">
+        <div class="modal-container">
+            
+            <div class="card">
+                <div class="btn-exit">✖️</div>
+                
+                <h2 class="text-question"></h2>
+                <h2 class="text-response"></h2>
+                <div class="btn-response">Resposta</div>
+                <div class="btn-next">Próxima</div>
+            </div>
+            
+            
+        </div>
+        <div class="form-container">
             <form action="" class="form">
                 <label for="pergunta">Pergunta</label>
                 <input type="text" name="pergunta" id="pergunta" placeholder="Ex: Quem Descobriu o Brasil?">
@@ -18,9 +31,7 @@
                 <input type="submit" value="Criar" id="criar" class="btn-enviar">
             </form>
             <button class="btn-sort">Sortear cartão</button>
-       </div>
-       <div class="cards-container">            
-       </div>
+        </div>
        
     </main>
     <script src="./js/main.js"></script>
